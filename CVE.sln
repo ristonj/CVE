@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVE", "CVE\CVE.csproj", "{4279C1EE-6A16-4EB1-9A47-25B5E9804B8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVE.Tests", "CVE.Tests\CVE.Tests.csproj", "{56A5408D-77D9-460F-B657-ABF7D6C7F1CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutputCSFromJson", "OutputCSFromJson\OutputCSFromJson.csproj", "{005A8CAC-7D4F-4943-AD9F-3A0C56434B94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4279C1EE-6A16-4EB1-9A47-25B5E9804B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4279C1EE-6A16-4EB1-9A47-25B5E9804B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4279C1EE-6A16-4EB1-9A47-25B5E9804B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4279C1EE-6A16-4EB1-9A47-25B5E9804B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A5408D-77D9-460F-B657-ABF7D6C7F1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A5408D-77D9-460F-B657-ABF7D6C7F1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A5408D-77D9-460F-B657-ABF7D6C7F1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A5408D-77D9-460F-B657-ABF7D6C7F1CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005A8CAC-7D4F-4943-AD9F-3A0C56434B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005A8CAC-7D4F-4943-AD9F-3A0C56434B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005A8CAC-7D4F-4943-AD9F-3A0C56434B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005A8CAC-7D4F-4943-AD9F-3A0C56434B94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
