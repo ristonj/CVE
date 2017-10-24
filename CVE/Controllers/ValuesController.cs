@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Hosting;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using CVE.Models;
@@ -16,7 +17,8 @@ namespace CVE.Controllers
         // GET api/values
         public List<Def_cve_item> Get()
         {
-            CVE.Models.Schema cveObject = CVE.Models.Schema.FromJson(File.ReadAllText("nvdcve-1.0-2017.json"));
+            string physicalPath = HostingEnvironment.MapPath("~/Content/nvdcve-1.0-2017.json");
+            CVE.Models.Schema cveObject = CVE.Models.Schema.FromJson(File.ReadAllText(physicalPath));
             return cveObject.CVE_Items.Take(25).ToList();
         }
 

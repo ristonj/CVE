@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="cveApp">
+<head>
+    <meta charset="utf-8" />
+    <title>CVE Filter</title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="AngularControllers/index.js"></script>
+</head>
+<body ng-controller="IndexController">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Severity</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="vuln in vulns">
+            <td>{{vuln.cve.CVE_data_meta.ID}}</td>
+            <td>{{vuln.impact.baseMetricV3.cvssV3.baseSeverity}}</td>
+        </tr>
+    </table>
+</body>
+</html>
