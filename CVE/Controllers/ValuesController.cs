@@ -14,12 +14,32 @@ namespace CVE.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public List<Def_cve_item> Get()
+        public const int PAGE_SIZE = 25;
+        public ValuesController() : base()
         {
-            string physicalPath = HostingEnvironment.MapPath("~/Content/nvdcve-1.0-2017.json");
+            physicalPath = HostingEnvironment.MapPath("~/Content/nvdcve-1.0-2017.json");
+        }
+
+        public ValuesController(string path) : base()
+        {
+            physicalPath = path;
+        }
+
+        public string physicalPath { get; set; }
+        // GET api/values
+        public CVEWrapper Get()
+        {
             CVE.Models.Schema cveObject = CVE.Models.Schema.FromJson(File.ReadAllText(physicalPath));
-            return cveObject.CVE_Items.Take(25).ToList();
+            List<Def_cve_item> sourceList = cveObject.CVE_Items.Take(PAGE_SIZE).ToList();
+            CVEWrapper myWrapper = new CVEWrapper();
+            myWrapper.count = cveObject.CVE_Items.Count;
+            myWrapper.items = new List<CVEItem>();
+            foreach(Def_cve_item myItem in sourceList)
+            {
+                CVEItem addItem = new CVEItem(myItem);
+                myWrapper.items.Add(addItem);
+            }
+            return myWrapper;
         }
 
         // GET api/values/5

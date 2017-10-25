@@ -18,9 +18,10 @@ namespace CVE.Tests.Controllers
         [TestMethod]
         public void testJsonLoad()
         {
-            ValuesController vc = new ValuesController();
-            List<Def_cve_item> cveItems = vc.Get();
-            Assert.AreEqual(25, cveItems.Count());
+            ValuesController vc = new ValuesController("nvdcve-1.0-2017.json");
+            CVEWrapper cveItems = vc.Get();
+            Assert.AreEqual(25, cveItems.items.Count);
+            Assert.AreEqual(8083, cveItems.count);
         }
     }
 }

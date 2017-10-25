@@ -5,7 +5,7 @@ cveApp.controller('IndexController', function IndexController($scope, $resource)
     var values = $resource('/api/Values', {}, {
         query: {
             method: 'GET',
-            isArray: true
+            isArray: false
         }
     });
     $scope.vulns = values.query();
