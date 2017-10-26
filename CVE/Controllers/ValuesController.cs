@@ -27,12 +27,33 @@ namespace CVE.Controllers
 
         public string physicalPath { get; set; }
         // GET api/values
-        public CVEWrapper Get()
+        public CVEWrapper Get(int page = 1, string sev = "")
         {
             CVE.Models.Schema cveObject = CVE.Models.Schema.FromJson(File.ReadAllText(physicalPath));
-            List<Def_cve_item> sourceList = cveObject.CVE_Items.Take(PAGE_SIZE).ToList();
+            if (page < 1)
+            {
+                page = 1;
+            }
+            List<Def_cve_item> wholeList = null;
+            if(string.IsNullOrWhiteSpace(sev))
+            {
+                wholeList = cveObject.CVE_Items.ToList();
+            }
+            else
+            {
+                wholeList = cveObject.CVE_Items.Where(x => x.Impact.BaseMetricV3.CvssV3.BaseSeverity.ToString() == sev).ToList();
+            }
+
+            if(((page + 1) * PAGE_SIZE) > wholeList.Count)
+            {
+                page = (wholeList.Count / PAGE_SIZE) + 1;
+            }
+
+            int numToSkip = (page - 1) * PAGE_SIZE;
+            
+            List<Def_cve_item> sourceList = wholeList.Skip(numToSkip).Take(PAGE_SIZE).ToList();
             CVEWrapper myWrapper = new CVEWrapper();
-            myWrapper.count = cveObject.CVE_Items.Count;
+            myWrapper.count = wholeList.Count;
             myWrapper.items = new List<CVEItem>();
             foreach(Def_cve_item myItem in sourceList)
             {
@@ -42,25 +63,6 @@ namespace CVE.Controllers
             return myWrapper;
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

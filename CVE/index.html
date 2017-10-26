@@ -9,19 +9,28 @@
     <link rel="stylesheet" href="Content/Site.css" />
 </head>
 <body ng-controller="IndexController">
+    <input type="radio" name="sev" ng-click="filter('')" checked /> ALL
+    <input type="radio" name="sev" ng-click="filter('CRITICAL')" />CRITICAL
+    <input type="radio" name="sev" ng-click="filter('HIGH')" />HIGH
+    <input type="radio" name="sev" ng-click="filter('MEDIUM')" />MEDIUM
+    <input type="radio" name="sev" ng-click="filter('LOW')" />LOW
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Severity</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="vuln in vulns.items">
                 <td>{{vuln.ID}}</td>
                 <td>{{vuln.severity}}</td>
+                <td>{{vuln.description}}</td>
             </tr>
         </tbody>
     </table>
+    <a id="prev" href="" ng-click="prevPage()">&lt; Prev</a> &nbsp; &nbsp;
+    <a id="prev" href="" ng-click="nextPage()">Next &gt;</a>
 </body>
 </html>
